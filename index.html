@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,11 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     :root {
       --cream: #FAF6F0;
@@ -105,11 +110,27 @@
     }
 
     @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20% { transform: translateX(-8px); }
-      40% { transform: translateX(8px); }
-      60% { transform: translateX(-5px); }
-      80% { transform: translateX(5px); }
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20% {
+        transform: translateX(-8px);
+      }
+
+      40% {
+        transform: translateX(8px);
+      }
+
+      60% {
+        transform: translateX(-5px);
+      }
+
+      80% {
+        transform: translateX(5px);
+      }
     }
 
     .password-hint {
@@ -219,13 +240,27 @@
     }
 
     @keyframes pulse {
-      0%, 100% { opacity: 0.6; }
-      50% { opacity: 1; }
+
+      0%,
+      100% {
+        opacity: 0.6;
+      }
+
+      50% {
+        opacity: 1;
+      }
     }
 
     @keyframes bounce-right {
-      0%, 100% { transform: translateX(0); }
-      50% { transform: translateX(6px); }
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      50% {
+        transform: translateX(6px);
+      }
     }
 
     /* --- Timeline Container --- */
@@ -372,7 +407,7 @@
       margin-left: 3px;
     }
 
-    .card-media video.playing + .play-icon {
+    .card-media video.playing+.play-icon {
       opacity: 0;
     }
 
@@ -534,7 +569,8 @@
     }
 
     /* --- Spacers --- */
-    .spacer-start, .spacer-end {
+    .spacer-start,
+    .spacer-end {
       flex: 0 0 5vw;
       height: 1px;
     }
@@ -649,6 +685,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- Password Screen -->
@@ -728,7 +765,8 @@
       <!-- 2 aug 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/1e ontbijtje op bed x.jpeg" alt="1e ontbijtje op bed" loading="lazy"></div>
+          <div class="card-media"><img src="photos/1e ontbijtje op bed x.jpeg" alt="1e ontbijtje op bed" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">2 augustus 2025</div>
             <div class="card-caption">1e ontbijtje op bed</div>
@@ -739,7 +777,8 @@
       <!-- 6 aug 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/op pad met freekie.PNG" alt="Op pad met Freekie" loading="lazy"></div>
+          <div class="card-media"><img src="photos/op pad met freekie.PNG" alt="Op pad met Freekie" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">6 augustus 2025</div>
             <div class="card-caption">Op pad met Freekie</div>
@@ -763,7 +802,8 @@
         <div class="video-tooltip" id="video-tooltip">Klik voor geluid op 't filmpje</div>
         <div class="card-inner">
           <div class="card-media">
-            <video src="photos/samen limoncello fiets.MOV" muted playsinline webkit-playsinline loop preload="metadata"></video>
+            <video src="photos/samen limoncello fiets.MOV" muted playsinline webkit-playsinline loop
+              preload="metadata"></video>
             <div class="play-icon"></div>
           </div>
           <div class="card-info">
@@ -775,7 +815,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/3e date limoncello.jpeg" alt="3e date limoncello" loading="lazy"></div>
+          <div class="card-media"><img src="photos/3e date limoncello.jpeg" alt="3e date limoncello" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">10 augustus 2025</div>
             <div class="card-caption">3e date limoncello</div>
@@ -808,7 +849,8 @@
       <div class="card">
         <div class="card-inner">
           <div class="card-media">
-            <video src="photos/samen fietsen naar waterkant.mp4" muted playsinline webkit-playsinline loop preload="metadata"></video>
+            <video src="photos/samen fietsen naar waterkant.mp4" muted playsinline webkit-playsinline loop
+              preload="metadata"></video>
             <div class="play-icon"></div>
           </div>
           <div class="card-info">
@@ -831,7 +873,8 @@
       <!-- 1 sep 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/veel bellen op surfkamp.PNG" alt="Veel bellen op surfkamp" loading="lazy"></div>
+          <div class="card-media"><img src="photos/veel bellen op surfkamp.PNG" alt="Veel bellen op surfkamp"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">1 september 2025</div>
             <div class="card-caption">Veel bellen op surfkamp</div>
@@ -842,7 +885,8 @@
       <!-- 8 sep 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/1e keer samen eten.jpeg" alt="1e keer samen eten" loading="lazy"></div>
+          <div class="card-media"><img src="photos/1e keer samen eten.jpeg" alt="1e keer samen eten" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">8 september 2025</div>
             <div class="card-caption">1e keer samen eten</div>
@@ -853,7 +897,8 @@
       <!-- 11 sep 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/freekie en harde werker.jpeg" alt="Freekie en harde werker" loading="lazy"></div>
+          <div class="card-media"><img src="photos/freekie en harde werker.jpeg" alt="Freekie en harde werker"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">11 september 2025</div>
             <div class="card-caption">Freekie en harde werker</div>
@@ -875,7 +920,8 @@
       <!-- 21 sep 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/altijd die puisten.jpeg" alt="Altijd die puisten" loading="lazy"></div>
+          <div class="card-media"><img src="photos/altijd die puisten.jpeg" alt="Altijd die puisten" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">21 september 2025</div>
             <div class="card-caption">Altijd die puisten</div>
@@ -896,7 +942,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/de lekkere buritto bowl.jpeg" alt="De lekkere burrito bowl" loading="lazy"></div>
+          <div class="card-media"><img src="photos/de lekkere buritto bowl.jpeg" alt="De lekkere burrito bowl"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">23 september 2025</div>
             <div class="card-caption">De lekkere burrito bowl</div>
@@ -917,7 +964,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/nomnom na candlelight.jpeg" alt="Nomnom na candlelight" loading="lazy"></div>
+          <div class="card-media"><img src="photos/nomnom na candlelight.jpeg" alt="Nomnom na candlelight"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">25 september 2025</div>
             <div class="card-caption">Nomnom na candlelight</div>
@@ -948,7 +996,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/freek met bril met niels en gijs.jpg" alt="Freek met bril met Niels en Gijs" loading="lazy"></div>
+          <div class="card-media"><img src="photos/freek met bril met niels en gijs.jpg"
+              alt="Freek met bril met Niels en Gijs" loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">2 oktober 2025</div>
             <div class="card-caption">Freek met bril met Niels en Gijs</div>
@@ -959,7 +1008,8 @@
       <!-- 5 okt 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/net terug van je ouders.jpg" alt="Net terug van je ouders" loading="lazy"></div>
+          <div class="card-media"><img src="photos/net terug van je ouders.jpg" alt="Net terug van je ouders"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">5 oktober 2025</div>
             <div class="card-caption">Net terug van je ouders</div>
@@ -969,7 +1019,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/goedgekeurd yesyes.jpg" alt="Goedgekeurd yesyes" loading="lazy"></div>
+          <div class="card-media"><img src="photos/goedgekeurd yesyes.jpg" alt="Goedgekeurd yesyes" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">5 oktober 2025</div>
             <div class="card-caption">Goedgekeurd yesyes</div>
@@ -1015,7 +1066,8 @@
       <!-- 19 okt 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/met freek bij de metro.jpeg" alt="Met Freek bij de metro" loading="lazy"></div>
+          <div class="card-media"><img src="photos/met freek bij de metro.jpeg" alt="Met Freek bij de metro"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">19 oktober 2025</div>
             <div class="card-caption">Met Freek bij de metro</div>
@@ -1026,7 +1078,8 @@
       <!-- 21 okt 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/onderweg naar vuurtoreneiland.jpeg" alt="Onderweg naar Vuurtoreneiland" loading="lazy"></div>
+          <div class="card-media"><img src="photos/onderweg naar vuurtoreneiland.jpeg"
+              alt="Onderweg naar Vuurtoreneiland" loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">21 oktober 2025</div>
             <div class="card-caption">Onderweg naar Vuurtoreneiland</div>
@@ -1046,7 +1099,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/vuurtoreneiland date.jpeg" alt="Vuurtoreneiland date" loading="lazy"></div>
+          <div class="card-media"><img src="photos/vuurtoreneiland date.jpeg" alt="Vuurtoreneiland date" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">21 oktober 2025</div>
             <div class="card-caption">Vuurtoreneiland date</div>
@@ -1056,7 +1110,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/knappie bij vuurtoreneiland.jpeg" alt="Knappie bij Vuurtoreneiland" loading="lazy"></div>
+          <div class="card-media"><img src="photos/knappie bij vuurtoreneiland.jpeg" alt="Knappie bij Vuurtoreneiland"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">21 oktober 2025</div>
             <div class="card-caption">Knappie bij Vuurtoreneiland</div>
@@ -1066,7 +1121,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/vuurtoreneiland menu.jpeg" alt="Vuurtoreneiland menu" loading="lazy"></div>
+          <div class="card-media"><img src="photos/vuurtoreneiland menu.jpeg" alt="Vuurtoreneiland menu" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">21 oktober 2025</div>
             <div class="card-caption">Vuurtoreneiland menu</div>
@@ -1087,7 +1143,8 @@
       <!-- 22 okt 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/onderweg met freek.jpeg" alt="Onderweg met Freek" loading="lazy"></div>
+          <div class="card-media"><img src="photos/onderweg met freek.jpeg" alt="Onderweg met Freek" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">22 oktober 2025</div>
             <div class="card-caption">Onderweg met Freek</div>
@@ -1098,7 +1155,8 @@
       <!-- 25 okt 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/hap slik weg na mijn bday.jpeg" alt="Hap slik weg na mijn bday" loading="lazy"></div>
+          <div class="card-media"><img src="photos/hap slik weg na mijn bday.jpeg" alt="Hap slik weg na mijn bday"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">25 oktober 2025</div>
             <div class="card-caption">Hap slik weg na mijn bday</div>
@@ -1119,7 +1177,8 @@
       <!-- 26 okt 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/even naar de action met de check.jpeg" alt="Even naar de Action met de check" loading="lazy"></div>
+          <div class="card-media"><img src="photos/even naar de action met de check.jpeg"
+              alt="Even naar de Action met de check" loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">26 oktober 2025</div>
             <div class="card-caption">Even naar de Action met de check</div>
@@ -1143,7 +1202,8 @@
       <!-- 30 okt 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/ikea lampen gehaald.PNG" alt="IKEA lampen gehaald" loading="lazy"></div>
+          <div class="card-media"><img src="photos/ikea lampen gehaald.PNG" alt="IKEA lampen gehaald" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">30 oktober 2025</div>
             <div class="card-caption">IKEA lampen gehaald</div>
@@ -1165,7 +1225,8 @@
       <!-- 4 nov 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/freek even koffie laten zetten.jpeg" alt="Freek even koffie laten zetten" loading="lazy"></div>
+          <div class="card-media"><img src="photos/freek even koffie laten zetten.jpeg"
+              alt="Freek even koffie laten zetten" loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">4 november 2025</div>
             <div class="card-caption">Freek even koffie laten zetten</div>
@@ -1187,7 +1248,8 @@
       <!-- 8 nov 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/halloween bij inesz.jpeg" alt="Halloween bij Inesz" loading="lazy"></div>
+          <div class="card-media"><img src="photos/halloween bij inesz.jpeg" alt="Halloween bij Inesz" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">8 november 2025</div>
             <div class="card-caption">Halloween bij Inesz</div>
@@ -1219,7 +1281,8 @@
       <!-- 13 nov 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/je kerstboom optuigen.jpeg" alt="Je kerstboom optuigen" loading="lazy"></div>
+          <div class="card-media"><img src="photos/je kerstboom optuigen.jpeg" alt="Je kerstboom optuigen"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">13 november 2025</div>
             <div class="card-caption">Je kerstboom optuigen</div>
@@ -1241,7 +1304,8 @@
       <!-- 18 nov 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/lekker met freekie bij kim.jpg" alt="Lekker met Freekie bij Kim" loading="lazy"></div>
+          <div class="card-media"><img src="photos/lekker met freekie bij kim.jpg" alt="Lekker met Freekie bij Kim"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">18 november 2025</div>
             <div class="card-caption">Lekker met Freekie bij Kim</div>
@@ -1262,7 +1326,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/oude spullen gevonden.jpeg" alt="Oude spullen gevonden" loading="lazy"></div>
+          <div class="card-media"><img src="photos/oude spullen gevonden.jpeg" alt="Oude spullen gevonden"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">22 november 2025</div>
             <div class="card-caption">Oude spullen gevonden</div>
@@ -1274,7 +1339,8 @@
       <div class="card">
         <div class="card-inner">
           <div class="card-media">
-            <video src="photos/nieuwe kapper spannendd.MOV" muted playsinline webkit-playsinline loop preload="metadata"></video>
+            <video src="photos/nieuwe kapper spannendd.MOV" muted playsinline webkit-playsinline loop
+              preload="metadata"></video>
             <div class="play-icon"></div>
           </div>
           <div class="card-info">
@@ -1287,7 +1353,8 @@
       <!-- 8 dec 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/de kas middle finger.jpeg" alt="De Kas middle finger" loading="lazy"></div>
+          <div class="card-media"><img src="photos/de kas middle finger.jpeg" alt="De Kas middle finger" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">8 december 2025</div>
             <div class="card-caption">De Kas middle finger</div>
@@ -1317,7 +1384,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/knappe mensen bij de kas.jpeg" alt="Knappe mensen bij De Kas" loading="lazy"></div>
+          <div class="card-media"><img src="photos/knappe mensen bij de kas.jpeg" alt="Knappe mensen bij De Kas"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">8 december 2025</div>
             <div class="card-caption">Knappe mensen bij De Kas</div>
@@ -1328,7 +1396,8 @@
       <!-- 11 dec 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/onderweg naar parijs.jpeg" alt="Onderweg naar Parijs" loading="lazy"></div>
+          <div class="card-media"><img src="photos/onderweg naar parijs.jpeg" alt="Onderweg naar Parijs" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">11 december 2025</div>
             <div class="card-caption">Onderweg naar Parijs</div>
@@ -1362,7 +1431,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/lekker croque madame.jpeg" alt="Lekker croque madame" loading="lazy"></div>
+          <div class="card-media"><img src="photos/lekker croque madame.jpeg" alt="Lekker croque madame" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">12 december 2025</div>
             <div class="card-caption">Lekker croque madame</div>
@@ -1372,7 +1442,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/bij de eiffeltoren.jpeg" alt="Bij de Eiffeltoren" loading="lazy"></div>
+          <div class="card-media"><img src="photos/bij de eiffeltoren.jpeg" alt="Bij de Eiffeltoren" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">12 december 2025</div>
             <div class="card-caption">Bij de Eiffeltoren</div>
@@ -1392,7 +1463,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/het is m echt echt.jpeg" alt="Het is 'm echt echt" loading="lazy"></div>
+          <div class="card-media"><img src="photos/het is m echt echt.jpeg" alt="Het is 'm echt echt" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">12 december 2025</div>
             <div class="card-caption">Het is 'm echt echt</div>
@@ -1412,7 +1484,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/hapslikweg bouillon.jpeg" alt="Hapslikweg bouillon" loading="lazy"></div>
+          <div class="card-media"><img src="photos/hapslikweg bouillon.jpeg" alt="Hapslikweg bouillon" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">12 december 2025</div>
             <div class="card-caption">Hapslikweg bouillon</div>
@@ -1423,7 +1496,8 @@
       <!-- 13 dec 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/even koffie in parijs.jpeg" alt="Even koffie in Parijs" loading="lazy"></div>
+          <div class="card-media"><img src="photos/even koffie in parijs.jpeg" alt="Even koffie in Parijs"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">13 december 2025</div>
             <div class="card-caption">Even koffie in Parijs</div>
@@ -1484,7 +1558,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/bril passon in de monprix.jpeg" alt="Bril passen in de Monoprix" loading="lazy"></div>
+          <div class="card-media"><img src="photos/bril passon in de monprix.jpeg" alt="Bril passen in de Monoprix"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">14 december 2025</div>
             <div class="card-caption">Bril passen in de Monoprix</div>
@@ -1494,7 +1569,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/hoedje in de monprix.jpeg" alt="Hoedje in de Monoprix" loading="lazy"></div>
+          <div class="card-media"><img src="photos/hoedje in de monprix.jpeg" alt="Hoedje in de Monoprix"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">14 december 2025</div>
             <div class="card-caption">Hoedje in de Monoprix</div>
@@ -1537,7 +1613,8 @@
       <!-- 24 dec 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/kersteten met de friends.jpg" alt="Kersteten met de friends" loading="lazy"></div>
+          <div class="card-media"><img src="photos/kersteten met de friends.jpg" alt="Kersteten met de friends"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">24 december 2025</div>
             <div class="card-caption">Kersteten met de friends</div>
@@ -1547,7 +1624,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/kerstdiner bij je moeder.jpeg" alt="Kerstdiner bij je moeder" loading="lazy"></div>
+          <div class="card-media"><img src="photos/kerstdiner bij je moeder.jpeg" alt="Kerstdiner bij je moeder"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">24 december 2025</div>
             <div class="card-caption">Kerstdiner bij je moeder</div>
@@ -1557,7 +1635,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/kerstdiner bij je mama.jpeg" alt="Kerstdiner bij je mama" loading="lazy"></div>
+          <div class="card-media"><img src="photos/kerstdiner bij je mama.jpeg" alt="Kerstdiner bij je mama"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">24 december 2025</div>
             <div class="card-caption">Kerstdiner bij je mama</div>
@@ -1579,7 +1658,8 @@
       <!-- 27 dec 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/jij schilderen ik afplakken.jpeg" alt="Jij schilderen ik afplakken" loading="lazy"></div>
+          <div class="card-media"><img src="photos/jij schilderen ik afplakken.jpeg" alt="Jij schilderen ik afplakken"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">27 december 2025</div>
             <div class="card-caption">Jij schilderen ik afplakken</div>
@@ -1622,7 +1702,8 @@
       <!-- 31 dec 2025 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/oud en nieuw bij ons!.jpeg" alt="Oud en nieuw bij ons!" loading="lazy"></div>
+          <div class="card-media"><img src="photos/oud en nieuw bij ons!.jpeg" alt="Oud en nieuw bij ons!"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">31 december 2025</div>
             <div class="card-caption">Oud en nieuw bij ons!</div>
@@ -1633,7 +1714,8 @@
       <!-- 1 jan 2026 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/na oud en nieuw selfcare toch.jpeg" alt="Na oud en nieuw selfcare toch" loading="lazy"></div>
+          <div class="card-media"><img src="photos/na oud en nieuw selfcare toch.jpeg"
+              alt="Na oud en nieuw selfcare toch" loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">1 januari 2026</div>
             <div class="card-caption">Na oud en nieuw selfcare toch</div>
@@ -1643,7 +1725,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/doner na oud en nieuw.jpeg" alt="Doner na oud en nieuw" loading="lazy"></div>
+          <div class="card-media"><img src="photos/doner na oud en nieuw.jpeg" alt="Doner na oud en nieuw"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">1 januari 2026</div>
             <div class="card-caption">Doner na oud en nieuw</div>
@@ -1665,7 +1748,8 @@
       <!-- 12 jan 2026 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/facetime met freek.PNG" alt="FaceTime met Freek" loading="lazy"></div>
+          <div class="card-media"><img src="photos/facetime met freek.PNG" alt="FaceTime met Freek" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">12 januari 2026</div>
             <div class="card-caption">FaceTime met Freek</div>
@@ -1676,7 +1760,8 @@
       <!-- 25 jan 2026 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/leuk schilderijtje maken.jpeg" alt="Leuk schilderijtje maken" loading="lazy"></div>
+          <div class="card-media"><img src="photos/leuk schilderijtje maken.jpeg" alt="Leuk schilderijtje maken"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">25 januari 2026</div>
             <div class="card-caption">Leuk schilderijtje maken</div>
@@ -1774,7 +1859,8 @@
       <!-- 6 mrt 2026 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/even adempauze holy moly knap.jpg" alt="Even adempauze holy moly knap" loading="lazy"></div>
+          <div class="card-media"><img src="photos/even adempauze holy moly knap.jpg"
+              alt="Even adempauze holy moly knap" loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">6 maart 2026</div>
             <div class="card-caption">Even adempauze holy moly knap</div>
@@ -1795,7 +1881,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/huilen want bali 2.jpg" alt="Huilen want Bali 2" loading="lazy"></div>
+          <div class="card-media"><img src="photos/huilen want bali 2.jpg" alt="Huilen want Bali 2" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">9 maart 2026</div>
             <div class="card-caption">Huilen want Bali 2</div>
@@ -1805,7 +1892,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/huilen want bali 3.jpg" alt="Huilen want Bali 3" loading="lazy"></div>
+          <div class="card-media"><img src="photos/huilen want bali 3.jpg" alt="Huilen want Bali 3" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">9 maart 2026</div>
             <div class="card-caption">Huilen want Bali 3</div>
@@ -1861,7 +1949,8 @@
 
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/mn schatje met de balon.jpg" alt="Mn schatje met de balon" loading="lazy"></div>
+          <div class="card-media"><img src="photos/mn schatje met de balon.jpg" alt="Mn schatje met de balon"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">25 maart 2026</div>
             <div class="card-caption">Mn schatje met de balon</div>
@@ -1894,7 +1983,8 @@
       <!-- 6 apr 2026 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/verhuizen met freekie.jpeg" alt="Verhuizen met Freekie" loading="lazy"></div>
+          <div class="card-media"><img src="photos/verhuizen met freekie.jpeg" alt="Verhuizen met Freekie"
+              loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">6 april 2026</div>
             <div class="card-caption">Verhuizen met Freekie</div>
@@ -1905,7 +1995,8 @@
       <!-- 7 apr 2026 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/klaar met verhuizen.jpeg" alt="Klaar met verhuizen" loading="lazy"></div>
+          <div class="card-media"><img src="photos/klaar met verhuizen.jpeg" alt="Klaar met verhuizen" loading="lazy">
+          </div>
           <div class="card-info">
             <div class="card-date">7 april 2026</div>
             <div class="card-caption">Klaar met verhuizen</div>
@@ -1916,7 +2007,8 @@
       <div class="card">
         <div class="card-inner">
           <div class="card-media">
-            <video src="photos/lekker tuinieren.mov" muted playsinline webkit-playsinline loop preload="metadata"></video>
+            <video src="photos/lekker tuinieren.mov" muted playsinline webkit-playsinline loop
+              preload="metadata"></video>
             <div class="play-icon"></div>
           </div>
           <div class="card-info">
@@ -1929,7 +2021,8 @@
       <!-- 8 apr 2026 -->
       <div class="card">
         <div class="card-inner">
-          <div class="card-media"><img src="photos/mama en marco op bezoek in je nieuwe huisje.jpg" alt="Mama en Marco op bezoek in je nieuwe huisje" loading="lazy"></div>
+          <div class="card-media"><img src="photos/mama en marco op bezoek in je nieuwe huisje.jpg"
+              alt="Mama en Marco op bezoek in je nieuwe huisje" loading="lazy"></div>
           <div class="card-info">
             <div class="card-date">8 april 2026</div>
             <div class="card-caption">Mama en Marco op bezoek in je nieuwe huisje</div>
@@ -1941,12 +2034,15 @@
       <div class="card">
         <div class="card-inner">
           <div class="card-media">
-            <video src="photos/Echt het laatste ritje om je spullen te verhuizen. Vakantie kan beginnen, en je huisje is echt af. Ben ZOOO super trots op jou .MOV" muted playsinline webkit-playsinline loop preload="metadata"></video>
+            <video
+              src="photos/Echt het laatste ritje om je spullen te verhuizen. Vakantie kan beginnen, en je huisje is echt af. Ben ZOOO super trots op jou .MOV"
+              muted playsinline webkit-playsinline loop preload="metadata"></video>
             <div class="play-icon"></div>
           </div>
           <div class="card-info">
             <div class="card-date">9 april 2026</div>
-            <div class="card-caption">Echt het laatste ritje. Vakantie kan beginnen!</div>
+            <div class="card-caption">Echt het laatste ritje om je spullen te verhuizen. Vakantie kan beginnen, en je
+              huisje is echt af. Ben ZOOO super trots op jou </div>
           </div>
         </div>
       </div>
@@ -1961,20 +2057,26 @@
         <div class="msg-content" id="msg-content">
           <p>
             <!-- SCHRIJF HIER JE BERICHT -->
-            Ik dacht, wat is het meest IT-nerdy dat ik kan doen voor 6 maanden: een website maken met onze herinneringen. Lol</br>
-            Vandaag ben ik in Tunesie dus kan ik je helaas niet zien of knuffelen, maar ik wilde uiteraard toch iets doen voor onze 6 maanden samen. Had ik met mezelf afgesproken he </br> </br>
+            Ik dacht, wat is het meest IT-nerdy dat ik kan doen voor 6 maanden: een website maken met onze
+            herinneringen. Lol</br>
+            Vandaag ben ik in Tunesie dus kan ik je helaas niet zien of knuffelen, maar ik wilde uiteraard toch iets
+            doen voor onze 6 maanden samen. Had ik met mezelf afgesproken he </br> </br>
 
             We zijn alweer op 6 maanden van onze relatie belandt. Het voelt als lang en kort tegelijk. Heel gek. </br>
-            6 maanden een relatie met een fantastische vrouw van wie ik elke dag geniet, en op wie ik elke dag weer een beetje verliefder wordt (wist niet dat dat kon). </br>
-            We hebben al heel veel dingen gedaan, en gaan hopelijk ook nog van alles doen. </br> </br> 
+            6 maanden een relatie met een fantastische vrouw van wie ik elke dag geniet, en op wie ik elke dag weer een
+            beetje verliefder wordt (wist niet dat dat kon). </br>
+            We hebben al heel veel dingen gedaan, en gaan hopelijk ook nog van alles doen. </br> </br>
             Ik besefte me tijdens het maken van deze site hoeveel dit al wel niet was. </br></br>
-            De eerste paar dates, veel drinken, chillen, eten (pokebowl of burritobowls vooral), de eerste keer bij jou thuis, de eerste keer bij mij thuis, de eerste keer samen slapen, de eerste keer samen wakker worden, de eerste keer samen eten maken, de eerste keer samen op vakantie naar Parijs. </br>
+            De eerste paar dates, veel drinken, chillen, eten (pokebowl of burritobowls vooral), de eerste keer bij jou
+            thuis, de eerste keer bij mij thuis, de eerste keer samen slapen, de eerste keer samen wakker worden, de
+            eerste keer samen eten maken, de eerste keer samen op vakantie naar Parijs. </br>
             Veel bellen, veel appen, veel elkaar zien, chique uit eten, ga zo maar door. </br></br>
 
             Ik val een beetje in herhaling met mijn briefje van 5 maanden, maar kan het niet vaak genoeg zeggen: </br>
             Ik ben echt zo blij met jou en geniet elke dag van jou. </br> </br>
 
-            Ik hoop dat je lekker kan genieten van je nieuwe huisje, je nieuwe tuintje, van freekiepeekie, en dan ben ik zo weer terug en kunnen we weer lekker samen zijn! </br>
+            Ik hoop dat je lekker kan genieten van je nieuwe huisje, je nieuwe tuintje, van freekiepeekie, en dan ben ik
+            zo weer terug en kunnen we weer lekker samen zijn! </br>
 
             Ik hou van jou </br> </br>
 
@@ -2126,7 +2228,7 @@
           if (entry.isIntersecting) {
             video.play().then(() => {
               video.classList.add('playing');
-            }).catch(() => {});
+            }).catch(() => { });
           } else {
             video.pause();
             video.classList.remove('playing');
@@ -2208,4 +2310,5 @@
   </script>
 
 </body>
+
 </html>
