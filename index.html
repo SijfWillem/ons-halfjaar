@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ons Halfjaar</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #FAF6F0;
+      --warm-white: #FFFDF9;
+      --brown-dark: #3D2B1F;
+      --brown-medium: #6B4F3E;
+      --brown-light: #A68B72;
+      --gold: #C9A96E;
+      --gold-light: #E8D5B0;
+      --shadow: rgba(61, 43, 31, 0.08);
+    }
+
+    html {
+      background: var(--cream);
+      overflow-x: hidden;
+      overflow-y: hidden;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--brown-dark);
+      background: var(--cream);
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+    }
+
+    /* --- Password Screen --- */
+    .password-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: var(--cream);
+      z-index: 100;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .password-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.97);
+    }
+
+    .dachshund-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .dachshund-wrapper img {
+      width: 420px;
+      max-width: 80vw;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 8px 24px rgba(61, 43, 31, 0.15));
+    }
+
+    .password-input-area {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .password-input-area input {
+      width: 220px;
+      padding: 0.65rem 1rem;
+      border: 2px solid var(--gold-light);
+      border-radius: 24px;
+      background: var(--warm-white);
+      color: var(--brown-dark);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .password-input-area input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 16px rgba(201, 169, 110, 0.3);
+    }
+
+    .password-input-area input.shake {
+      animation: shake 0.4s ease;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-5px); }
+      80% { transform: translateX(5px); }
+    }
+
+    .password-hint {
+      font-size: 0.7rem;
+      color: var(--brown-light);
+      letter-spacing: 0.05em;
+      min-height: 1.2em;
+    }
+
+    .password-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--brown-dark);
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: var(--cream);
+      z-index: 10;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .hero.unlocked {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .hero.hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.97);
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 600;
+      color: var(--brown-dark);
+      margin-bottom: 0.3em;
+      letter-spacing: -0.02em;
+    }
+
+    .hero .subtitle {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: var(--brown-light);
+      margin-bottom: 2.5rem;
+    }
+
+    .counter {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .counter-item {
+      text-align: center;
+    }
+
+    .counter-item .number {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      color: var(--brown-dark);
+      line-height: 1;
+      display: block;
+      min-width: 2.5ch;
+    }
+
+    .counter-item .label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--brown-light);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-top: 0.4rem;
+    }
+
+    .scroll-hint {
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: var(--brown-light);
+      letter-spacing: 0.05em;
+      animation: pulse 2.5s ease-in-out infinite;
+      cursor: pointer;
+    }
+
+    .scroll-hint span {
+      display: inline-block;
+      margin-left: 0.5rem;
+      animation: bounce-right 1.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes bounce-right {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(6px); }
+    }
+
+    /* --- Timeline Container --- */
+    .timeline-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold-light) transparent;
+    }
+
+    .timeline-wrapper.visible {
+      opacity: 1;
+    }
+
+    .timeline-wrapper::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .timeline-wrapper::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .timeline-wrapper::-webkit-scrollbar-thumb {
+      background: var(--gold-light);
+      border-radius: 3px;
+    }
+
+    .timeline {
+      display: flex;
+      align-items: center;
+      height: 100vh;
+      height: 100dvh;
+      padding: 0 8vw;
+      gap: 0;
+      position: relative;
+    }
+
+    /* --- Timeline Line --- */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--gold-light);
+      z-index: 0;
+    }
+
+    /* --- Photo Cards --- */
+    .card {
+      flex: 0 0 auto;
+      width: 340px;
+      margin: 0 30px;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:nth-child(odd) {
+      align-self: flex-start;
+      margin-top: 8vh;
+    }
+
+    .card:nth-child(even) {
+      align-self: flex-end;
+      margin-bottom: 8vh;
+    }
+
+    .card-inner {
+      background: var(--warm-white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--shadow), 0 1px 4px var(--shadow);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .card-inner:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 40px rgba(61, 43, 31, 0.12), 0 2px 8px var(--shadow);
+    }
+
+    .card-media {
+      width: 100%;
+      height: 380px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-media img,
+    .card-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .card-inner:hover .card-media img,
+    .card-inner:hover .card-media video {
+      transform: scale(1.03);
+    }
+
+    .card-media .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      background: rgba(61, 43, 31, 0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .card-media .play-icon::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 0 10px 18px;
+      border-color: transparent transparent transparent #FFFDF9;
+      margin-left: 3px;
+    }
+
+    .card-media video.playing + .play-icon {
+      opacity: 0;
+    }
+
+    .card-info {
+      padding: 1rem 1.2rem;
+    }
+
+    .card-date {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+
+    .card-caption {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--brown-dark);
+      line-height: 1.4;
+    }
+
+    /* --- Connector dots --- */
+    .card::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 2px solid var(--cream);
+      z-index: 2;
+    }
+
+    .card:nth-child(odd)::after {
+      bottom: -38px;
+    }
+
+    .card:nth-child(even)::after {
+      top: -38px;
+    }
+
+    /* --- End Message --- */
+    .end-message {
+      flex: 0 0 auto;
+      width: 500px;
+      max-height: 85vh;
+      margin: 0 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      padding: 2rem 1rem;
+    }
+
+    .end-message.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .end-message h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      color: var(--brown-dark);
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .end-message p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--brown-medium);
+      max-width: 400px;
+    }
+
+    .end-message .heart {
+      font-size: 2rem;
+      margin-top: 2rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .end-message .scroll-controls {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .end-message .scroll-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold-light);
+      background: var(--warm-white);
+      color: var(--brown-medium);
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .end-message .scroll-btn:hover {
+      border-color: var(--gold);
+      background: var(--gold-light);
+    }
+
+    .end-message .msg-content {
+      max-height: 45vh;
+      overflow-y: auto;
+      padding: 0 0.5rem;
+      scrollbar-width: none;
+    }
+
+    .end-message .msg-content::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* --- Spacers --- */
+    .spacer-start, .spacer-end {
+      flex: 0 0 5vw;
+      height: 1px;
+    }
+
+    /* --- Mobile --- */
+    @media (max-width: 600px) {
+      .password-screen {
+        padding: 1rem;
+      }
+
+      .password-title {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+
+      .dachshund-wrapper img {
+        width: 280px;
+      }
+
+      .password-input-area {
+        margin-top: 1.5rem;
+      }
+
+      .password-input-area input {
+        width: 190px;
+        font-size: 0.85rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.8rem, 8vw, 2.8rem);
+      }
+
+      .hero .subtitle {
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+        margin-bottom: 1.5rem;
+      }
+
+      .counter {
+        gap: 0.8rem;
+      }
+
+      .counter-item .number {
+        font-size: clamp(1.5rem, 6vw, 2.2rem);
+      }
+
+      .counter-item .label {
+        font-size: 0.6rem;
+      }
+
+      .scroll-hint {
+        font-size: 0.75rem;
+      }
+
+      .timeline {
+        padding: 0 5vw;
+      }
+
+      .card {
+        width: 260px;
+        margin: 0 14px;
+      }
+
+      .card:nth-child(odd) {
+        margin-top: 12vh;
+      }
+
+      .card:nth-child(even) {
+        margin-bottom: 12vh;
+      }
+
+      .card-media {
+        height: 280px;
+      }
+
+      .card-info {
+        padding: 0.7rem 0.9rem;
+      }
+
+      .card-date {
+        font-size: 0.6rem;
+      }
+
+      .card-caption {
+        font-size: 0.85rem;
+      }
+
+      .end-message {
+        width: 300px;
+        margin: 0 30px;
+        padding: 1.5rem 0.5rem;
+      }
+
+      .end-message h2 {
+        font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+      }
+
+      .end-message .msg-content {
+        max-height: 40vh;
+      }
+
+      .end-message p {
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
+
+      .end-message .scroll-btn {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Password Screen -->
+  <div class="password-screen" id="password-screen">
+    <p class="password-title">Wat is het wachtwoord?</p>
+    <div class="dachshund-wrapper">
+      <img src="freek.jpg" alt="Freek">
+      <div class="password-input-area">
+        <input type="password" id="password-input" placeholder="wachtwoord" autocomplete="off" spellcheck="false">
+        <span class="password-hint" id="password-hint">&nbsp;</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero" id="hero">
+    <h1>Ons Halfjaar</h1>
+    <p class="subtitle">Sijf & Juul</p>
+    <div class="counter">
+      <div class="counter-item">
+        <span class="number" id="days">0</span>
+        <div class="label">Dagen</div>
+      </div>
+      <div class="counter-item">
+        <span class="number" id="hours">0</span>
+        <div class="label">Uren</div>
+      </div>
+      <div class="counter-item">
+        <span class="number" id="minutes">0</span>
+        <div class="label">Minuten</div>
+      </div>
+      <div class="counter-item">
+        <span class="number" id="seconds">0</span>
+        <div class="label">Seconden</div>
+      </div>
+    </div>
+    <div class="scroll-hint" id="start-btn">Scroll door onze herinneringen <span>&rarr;</span></div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline-wrapper" id="timeline-wrapper">
+    <div class="timeline" id="timeline">
+      <div class="spacer-start"></div>
+
+      <!-- 24 juli 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/1e date.jpeg" alt="1e date" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">24 juli 2025</div>
+            <div class="card-caption">1e date</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 30 juli 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/2e date sangria.jpeg" alt="2e date sangria" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">30 juli 2025</div>
+            <div class="card-caption">2e date sangria</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/2e date mac.jpeg" alt="2e date mac" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">30 juli 2025</div>
+            <div class="card-caption">2e date mac</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 aug 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/1e ontbijtje op bed x.jpeg" alt="1e ontbijtje op bed" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">2 augustus 2025</div>
+            <div class="card-caption">1e ontbijtje op bed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 aug 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/op pad met freekie.PNG" alt="Op pad met Freekie" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">6 augustus 2025</div>
+            <div class="card-caption">Op pad met Freekie</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 aug 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/keiharde werker.jpeg" alt="Keiharde werker" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">8 augustus 2025</div>
+            <div class="card-caption">Keiharde werker</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10 aug 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media">
+            <video src="photos/samen limoncello fiets.MOV" muted playsinline webkit-playsinline loop preload="metadata"></video>
+            <div class="play-icon"></div>
+          </div>
+          <div class="card-info">
+            <div class="card-date">10 augustus 2025</div>
+            <div class="card-caption">Samen limoncello fiets</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/3e date limoncello.jpeg" alt="3e date limoncello" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">10 augustus 2025</div>
+            <div class="card-caption">3e date limoncello</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/3e date 2.jpeg" alt="3e date" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">10 augustus 2025</div>
+            <div class="card-caption">3e date</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18 aug 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/eerste keer kim.jpeg" alt="Eerste keer Kim" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">18 augustus 2025</div>
+            <div class="card-caption">Eerste keer Kim</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 25 aug 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media">
+            <video src="photos/samen fietsen naar waterkant.mp4" muted playsinline webkit-playsinline loop preload="metadata"></video>
+            <div class="play-icon"></div>
+          </div>
+          <div class="card-info">
+            <div class="card-date">25 augustus 2025</div>
+            <div class="card-caption">Samen fietsen naar Waterkant</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/waterkant .jpg" alt="Waterkant" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">25 augustus 2025</div>
+            <div class="card-caption">Waterkant</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1 sep 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/veel bellen op surfkamp.PNG" alt="Veel bellen op surfkamp" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">1 september 2025</div>
+            <div class="card-caption">Veel bellen op surfkamp</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 sep 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/1e keer samen eten.jpeg" alt="1e keer samen eten" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">8 september 2025</div>
+            <div class="card-caption">1e keer samen eten</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11 sep 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/freekie en harde werker.jpeg" alt="Freekie en harde werker" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">11 september 2025</div>
+            <div class="card-caption">Freekie en harde werker</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 19 sep 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/selfiepelfie.jpeg" alt="Selfiepelfie" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">19 september 2025</div>
+            <div class="card-caption">Selfiepelfie</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 21 sep 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/altijd die puisten.jpeg" alt="Altijd die puisten" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">21 september 2025</div>
+            <div class="card-caption">Altijd die puisten</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 23 sep 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/appeltaart .jpeg" alt="Appeltaart" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">23 september 2025</div>
+            <div class="card-caption">Appeltaart</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/de lekkere buritto bowl.jpeg" alt="De lekkere burrito bowl" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">23 september 2025</div>
+            <div class="card-caption">De lekkere burrito bowl</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 25 sep 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/naar candlelight.jpeg" alt="Naar candlelight" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">25 september 2025</div>
+            <div class="card-caption">Naar candlelight</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/nomnom na candlelight.jpeg" alt="Nomnom na candlelight" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">25 september 2025</div>
+            <div class="card-caption">Nomnom na candlelight</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 okt 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/sweksy.jpeg" alt="Sweksy" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">2 oktober 2025</div>
+            <div class="card-caption">Sweksy</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/pokebowl .jpeg" alt="Pokebowl" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">2 oktober 2025</div>
+            <div class="card-caption">Pokebowl</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/freek met bril met niels en gijs.jpg" alt="Freek met bril met Niels en Gijs" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">2 oktober 2025</div>
+            <div class="card-caption">Freek met bril met Niels en Gijs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 okt 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/net terug van je ouders.jpg" alt="Net terug van je ouders" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">5 oktober 2025</div>
+            <div class="card-caption">Net terug van je ouders</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/goedgekeurd yesyes.jpg" alt="Goedgekeurd yesyes" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">5 oktober 2025</div>
+            <div class="card-caption">Goedgekeurd yesyes</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 okt 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/bij mijn ouders.jpeg" alt="Bij mijn ouders" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">9 oktober 2025</div>
+            <div class="card-caption">Bij mijn ouders</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13 okt 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/VERKERING!!.jpg" alt="VERKERING!!" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">13 oktober 2025</div>
+            <div class="card-caption">VERKERING!!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media">
+            <video src="photos/nepverkering.mov" muted playsinline webkit-playsinline loop preload="metadata"></video>
+            <div class="play-icon"></div>
+          </div>
+          <div class="card-info">
+            <div class="card-date">13 oktober 2025</div>
+            <div class="card-caption">Nepverkering</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 19 okt 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/met freek bij de metro.jpeg" alt="Met Freek bij de metro" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">19 oktober 2025</div>
+            <div class="card-caption">Met Freek bij de metro</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 21 okt 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/onderweg naar vuurtoreneiland.jpeg" alt="Onderweg naar Vuurtoreneiland" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">21 oktober 2025</div>
+            <div class="card-caption">Onderweg naar Vuurtoreneiland</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/vuurtoreneiland.jpeg" alt="Vuurtoreneiland" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">21 oktober 2025</div>
+            <div class="card-caption">Vuurtoreneiland</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/vuurtoreneiland date.jpeg" alt="Vuurtoreneiland date" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">21 oktober 2025</div>
+            <div class="card-caption">Vuurtoreneiland date</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/knappie bij vuurtoreneiland.jpeg" alt="Knappie bij Vuurtoreneiland" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">21 oktober 2025</div>
+            <div class="card-caption">Knappie bij Vuurtoreneiland</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/vuurtoreneiland menu.jpeg" alt="Vuurtoreneiland menu" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">21 oktober 2025</div>
+            <div class="card-caption">Vuurtoreneiland menu</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/lekker eten.jpeg" alt="Lekker eten" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">21 oktober 2025</div>
+            <div class="card-caption">Lekker eten</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 22 okt 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/onderweg met freek.jpeg" alt="Onderweg met Freek" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">22 oktober 2025</div>
+            <div class="card-caption">Onderweg met Freek</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 25 okt 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/hap slik weg na mijn bday.jpeg" alt="Hap slik weg na mijn bday" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">25 oktober 2025</div>
+            <div class="card-caption">Hap slik weg na mijn bday</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/brak na mijn bday.PNG" alt="Brak na mijn bday" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">25 oktober 2025</div>
+            <div class="card-caption">Brak na mijn bday</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 26 okt 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/even naar de action met de check.jpeg" alt="Even naar de Action met de check" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">26 oktober 2025</div>
+            <div class="card-caption">Even naar de Action met de check</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media">
+            <video src="photos/vroomvroom.mov" muted playsinline webkit-playsinline loop preload="metadata"></video>
+            <div class="play-icon"></div>
+          </div>
+          <div class="card-info">
+            <div class="card-date">26 oktober 2025</div>
+            <div class="card-caption">Vroomvroom</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 30 okt 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/ikea lampen gehaald.PNG" alt="IKEA lampen gehaald" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">30 oktober 2025</div>
+            <div class="card-caption">IKEA lampen gehaald</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 nov 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/hapslikweg.jpg" alt="Hapslikweg" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">3 november 2025</div>
+            <div class="card-caption">Hapslikweg</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4 nov 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/freek even koffie laten zetten.jpeg" alt="Freek even koffie laten zetten" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">4 november 2025</div>
+            <div class="card-caption">Freek even koffie laten zetten</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 nov 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/veel facetimen.PNG" alt="Veel facetimen" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">6 november 2025</div>
+            <div class="card-caption">Veel facetimen</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 nov 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/halloween bij inesz.jpeg" alt="Halloween bij Inesz" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">8 november 2025</div>
+            <div class="card-caption">Halloween bij Inesz</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/halloween selfie.jpeg" alt="Halloween selfie" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">8 november 2025</div>
+            <div class="card-caption">Halloween selfie</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 nov 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/brak na halloween.jpeg" alt="Brak na Halloween" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">9 november 2025</div>
+            <div class="card-caption">Brak na Halloween</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13 nov 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/je kerstboom optuigen.jpeg" alt="Je kerstboom optuigen" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">13 november 2025</div>
+            <div class="card-caption">Je kerstboom optuigen</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14 nov 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/in de hema.jpeg" alt="In de HEMA" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">14 november 2025</div>
+            <div class="card-caption">In de HEMA</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 18 nov 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/lekker met freekie bij kim.jpg" alt="Lekker met Freekie bij Kim" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">18 november 2025</div>
+            <div class="card-caption">Lekker met Freekie bij Kim</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 22 nov 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/matchy.jpeg" alt="Matchy" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">22 november 2025</div>
+            <div class="card-caption">Matchy</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/oude spullen gevonden.jpeg" alt="Oude spullen gevonden" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">22 november 2025</div>
+            <div class="card-caption">Oude spullen gevonden</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 30 nov 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media">
+            <video src="photos/nieuwe kapper spannendd.MOV" muted playsinline webkit-playsinline loop preload="metadata"></video>
+            <div class="play-icon"></div>
+          </div>
+          <div class="card-info">
+            <div class="card-date">30 november 2025</div>
+            <div class="card-caption">Nieuwe kapper spannendd</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 dec 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/de kas middle finger.jpeg" alt="De Kas middle finger" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">8 december 2025</div>
+            <div class="card-caption">De Kas middle finger</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/de kas wijn.jpeg" alt="De Kas wijn" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">8 december 2025</div>
+            <div class="card-caption">De Kas wijn</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/wijnen in de kas.jpeg" alt="Wijnen in De Kas" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">8 december 2025</div>
+            <div class="card-caption">Wijnen in De Kas</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/knappe mensen bij de kas.jpeg" alt="Knappe mensen bij De Kas" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">8 december 2025</div>
+            <div class="card-caption">Knappe mensen bij De Kas</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11 dec 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/onderweg naar parijs.jpeg" alt="Onderweg naar Parijs" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">11 december 2025</div>
+            <div class="card-caption">Onderweg naar Parijs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 dec 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/vroeg onderweg.jpeg" alt="Vroeg onderweg" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">12 december 2025</div>
+            <div class="card-caption">Vroeg onderweg</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media">
+            <video src="photos/paris ouioui.MOV" muted playsinline webkit-playsinline loop preload="metadata"></video>
+            <div class="play-icon"></div>
+          </div>
+          <div class="card-info">
+            <div class="card-date">12 december 2025</div>
+            <div class="card-caption">Paris oui oui</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/lekker croque madame.jpeg" alt="Lekker croque madame" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">12 december 2025</div>
+            <div class="card-caption">Lekker croque madame</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/bij de eiffeltoren.jpeg" alt="Bij de Eiffeltoren" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">12 december 2025</div>
+            <div class="card-caption">Bij de Eiffeltoren</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/het is m echt.jpeg" alt="Het is 'm echt" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">12 december 2025</div>
+            <div class="card-caption">Het is 'm echt</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/het is m echt echt.jpeg" alt="Het is 'm echt echt" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">12 december 2025</div>
+            <div class="card-caption">Het is 'm echt echt</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/liftselfie parijs.jpeg" alt="Liftselfie Parijs" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">12 december 2025</div>
+            <div class="card-caption">Liftselfie Parijs</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/hapslikweg bouillon.jpeg" alt="Hapslikweg bouillon" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">12 december 2025</div>
+            <div class="card-caption">Hapslikweg bouillon</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 13 dec 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/even koffie in parijs.jpeg" alt="Even koffie in Parijs" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">13 december 2025</div>
+            <div class="card-caption">Even koffie in Parijs</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/leuke winkeltjes.jpeg" alt="Leuke winkeltjes" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">13 december 2025</div>
+            <div class="card-caption">Leuke winkeltjes</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/trappen trappen.jpeg" alt="Trappen trappen" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">13 december 2025</div>
+            <div class="card-caption">Trappen trappen</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/boven!!.jpeg" alt="Boven!!" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">13 december 2025</div>
+            <div class="card-caption">Boven!!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14 dec 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/seksyyou.jpeg" alt="Seksyyou" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">14 december 2025</div>
+            <div class="card-caption">Seksyyou</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/seksyyoume.jpeg" alt="Seksyyoume" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">14 december 2025</div>
+            <div class="card-caption">Seksyyoume</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/bril passon in de monprix.jpeg" alt="Bril passen in de Monoprix" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">14 december 2025</div>
+            <div class="card-caption">Bril passen in de Monoprix</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/hoedje in de monprix.jpeg" alt="Hoedje in de Monoprix" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">14 december 2025</div>
+            <div class="card-caption">Hoedje in de Monoprix</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/en weer terug.jpeg" alt="En weer terug" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">14 december 2025</div>
+            <div class="card-caption">En weer terug</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 21 dec 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/je beste vriendje.jpeg" alt="Je beste vriendje" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">21 december 2025</div>
+            <div class="card-caption">Je beste vriendje</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 22 dec 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/parijs uitpakken.jpeg" alt="Parijs uitpakken" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">22 december 2025</div>
+            <div class="card-caption">Parijs uitpakken</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 24 dec 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/kersteten met de friends.jpg" alt="Kersteten met de friends" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">24 december 2025</div>
+            <div class="card-caption">Kersteten met de friends</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/kerstdiner bij je moeder.jpeg" alt="Kerstdiner bij je moeder" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">24 december 2025</div>
+            <div class="card-caption">Kerstdiner bij je moeder</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/kerstdiner bij je mama.jpeg" alt="Kerstdiner bij je mama" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">24 december 2025</div>
+            <div class="card-caption">Kerstdiner bij je mama</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 26 dec 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/mijn verhuizing.jpeg" alt="Mijn verhuizing" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">26 december 2025</div>
+            <div class="card-caption">Mijn verhuizing</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 27 dec 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/jij schilderen ik afplakken.jpeg" alt="Jij schilderen ik afplakken" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">27 december 2025</div>
+            <div class="card-caption">Jij schilderen ik afplakken</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 29 dec 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/action shoplog.jpeg" alt="Action shoplog" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">29 december 2025</div>
+            <div class="card-caption">Action shoplog</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/lekker chappe.jpeg" alt="Lekker chappe" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">29 december 2025</div>
+            <div class="card-caption">Lekker chappe</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 30 dec 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/veel bellen he.PNG" alt="Veel bellen he" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">30 december 2025</div>
+            <div class="card-caption">Veel bellen he</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 31 dec 2025 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/oud en nieuw bij ons!.jpeg" alt="Oud en nieuw bij ons!" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">31 december 2025</div>
+            <div class="card-caption">Oud en nieuw bij ons!</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1 jan 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/na oud en nieuw selfcare toch.jpeg" alt="Na oud en nieuw selfcare toch" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">1 januari 2026</div>
+            <div class="card-caption">Na oud en nieuw selfcare toch</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/doner na oud en nieuw.jpeg" alt="Doner na oud en nieuw" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">1 januari 2026</div>
+            <div class="card-caption">Doner na oud en nieuw</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5 jan 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/gezellige selfie.jpeg" alt="Gezellige selfie" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">5 januari 2026</div>
+            <div class="card-caption">Gezellige selfie</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 jan 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/facetime met freek.PNG" alt="FaceTime met Freek" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">12 januari 2026</div>
+            <div class="card-caption">FaceTime met Freek</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 25 jan 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/leuk schilderijtje maken.jpeg" alt="Leuk schilderijtje maken" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">25 januari 2026</div>
+            <div class="card-caption">Leuk schilderijtje maken</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 feb 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/op pad in de fiat.jpeg" alt="Op pad in de Fiat" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">8 februari 2026</div>
+            <div class="card-caption">Op pad in de Fiat</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11 feb 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/tram diner.jpeg" alt="Tram diner" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">11 februari 2026</div>
+            <div class="card-caption">Tram diner</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/amstertram diner.jpeg" alt="Amstertram diner" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">11 februari 2026</div>
+            <div class="card-caption">Amstertram diner</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17 feb 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/goofy.jpeg" alt="Goofy" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">17 februari 2026</div>
+            <div class="card-caption">Goofy</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 22 feb 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/melkforlife.jpeg" alt="Melk for life" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">22 februari 2026</div>
+            <div class="card-caption">Melk for life</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 27 feb 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/met mijn fam.jpg" alt="Met mijn fam" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">27 februari 2026</div>
+            <div class="card-caption">Met mijn fam</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2 mrt 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/freek in the sun.jpeg" alt="Freek in the sun" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">2 maart 2026</div>
+            <div class="card-caption">Freek in the sun</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 mrt 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/zonisshining.jpeg" alt="Zon is shining" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">3 maart 2026</div>
+            <div class="card-caption">Zon is shining</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 mrt 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/even adempauze holy moly knap.jpg" alt="Even adempauze holy moly knap" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">6 maart 2026</div>
+            <div class="card-caption">Even adempauze holy moly knap</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9 mrt 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/huilen want bali.jpeg" alt="Huilen want Bali" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">9 maart 2026</div>
+            <div class="card-caption">Huilen want Bali</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/huilen want bali 2.jpg" alt="Huilen want Bali 2" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">9 maart 2026</div>
+            <div class="card-caption">Huilen want Bali 2</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/huilen want bali 3.jpg" alt="Huilen want Bali 3" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">9 maart 2026</div>
+            <div class="card-caption">Huilen want Bali 3</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12 mrt 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/briefje 5 maanden.jpg" alt="Briefje 5 maanden" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">12 maart 2026</div>
+            <div class="card-caption">Briefje 5 maanden</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14 mrt 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/facetime op bali.PNG" alt="FaceTime op Bali" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">14 maart 2026</div>
+            <div class="card-caption">FaceTime op Bali</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 25 mrt 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media">
+            <video src="photos/WEER TERUG!!.MOV" muted playsinline webkit-playsinline loop preload="metadata"></video>
+            <div class="play-icon"></div>
+          </div>
+          <div class="card-info">
+            <div class="card-date">25 maart 2026</div>
+            <div class="card-caption">WEER TERUG!!</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/eindelijk terug .jpeg" alt="Eindelijk terug" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">25 maart 2026</div>
+            <div class="card-caption">Eindelijk terug</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/mn schatje met de balon.jpg" alt="Mn schatje met de balon" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">25 maart 2026</div>
+            <div class="card-caption">Mn schatje met de balon</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 29 mrt 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/lievelingsjas.jpeg" alt="Lievelingsjas" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">29 maart 2026</div>
+            <div class="card-caption">Lievelingsjas</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 31 mrt 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/nieuwe coupe.PNG" alt="Nieuwe coupe" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">31 maart 2026</div>
+            <div class="card-caption">Nieuwe coupe</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 apr 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/verhuizen met freekie.jpeg" alt="Verhuizen met Freekie" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">6 april 2026</div>
+            <div class="card-caption">Verhuizen met Freekie</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7 apr 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/klaar met verhuizen.jpeg" alt="Klaar met verhuizen" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">7 april 2026</div>
+            <div class="card-caption">Klaar met verhuizen</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media">
+            <video src="photos/lekker tuinieren.mov" muted playsinline webkit-playsinline loop preload="metadata"></video>
+            <div class="play-icon"></div>
+          </div>
+          <div class="card-info">
+            <div class="card-date">7 april 2026</div>
+            <div class="card-caption">Lekker tuinieren</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8 apr 2026 -->
+      <div class="card">
+        <div class="card-inner">
+          <div class="card-media"><img src="photos/mama en marco op bezoek in je nieuwe huisje.jpg" alt="Mama en Marco op bezoek in je nieuwe huisje" loading="lazy"></div>
+          <div class="card-info">
+            <div class="card-date">8 april 2026</div>
+            <div class="card-caption">Mama en Marco op bezoek in je nieuwe huisje</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- End Message -->
+      <div class="end-message" id="end-message">
+        <h2>Lieve lieve lieve lieve liefste Juul</h2>
+        <div class="scroll-controls">
+          <button class="scroll-btn" id="msg-up" aria-label="Omhoog">&uarr;</button>
+          <button class="scroll-btn" id="msg-down" aria-label="Omlaag">&darr;</button>
+        </div>
+        <div class="msg-content" id="msg-content">
+          <p>
+            <!-- SCHRIJF HIER JE BERICHT -->
+            Ik dacht, wat is het meest IT-nerdy dat ik kan doen voor 6 maanden: een website maken met onze herinneringen. Lol</br>
+            Vandaag ben ik in Tunesie dus kan ik je helaas niet zien, knuffelen, winkwink, maar ik wilde uiteraard toch iets doen voor onze 6 maanden samen. Had ik met mezelf afgesproken he </br> </br>
+
+            We zijn alweer op 6 maanden van onze relatie belandt. Het voelt als lang en kort tegelijk. Heel gek. </br>
+            6 maanden een relatie met een fantastische vrouw van wie ik elke dag van geniet, en elke dag weer een beetje verliefder op je wordt (wist niet dat dat kon). </br>
+            We hebben al heel veel dingen gedaan, en gaan hopelijk ook nog van alles doen. </br> </br> 
+            Ik besefte me tijdens het maken van deze site hoeveel dit al wel niet was. </br></br>
+            De eerste paar dates, veel drinken, chillen, eten (pokebowl of burritobowls vooral), de eerste keer bij jou thuis, de eerste keer bij mij thuis, de eerste keer samen slapen, de eerste keer samen wakker worden, de eerste keer samen eten maken, de eerste keer samen op vakantie naar Parijs. </br>
+            Veel bellen, veel appen, veel elkaar zien, chique uit eten, ga zo maar door. </br></br>
+
+            Ik val een beetje in herhaling met mijn briefje van 5 maanden, maar kan het niet vaak genoeg zeggen: </br>
+            Ik ben echt zo blij met jou en geniet elke dag van jou. </br> </br>
+
+            Ik hoop dat je lekker kan genieten van je nieuwe huisje, je nieuwe tuintje, freekiepeekie, dan ben ik zo weer terug en kunnen we weer lekker samen zijn. </br>
+
+            Ik hou van jou </br> </br>
+
+            Op 6 maanden xxx
+          </p>
+        </div>
+        <div class="heart">&hearts;</div>
+      </div>
+
+      <div class="spacer-end"></div>
+    </div>
+  </div>
+
+  <script>
+    // --- Password Gate ---
+    const passwordScreen = document.getElementById('password-screen');
+    const passwordInput = document.getElementById('password-input');
+    const passwordHint = document.getElementById('password-hint');
+
+    function unlockHero() {
+      passwordScreen.classList.add('hidden');
+      hero.classList.add('unlocked');
+      setTimeout(() => {
+        passwordScreen.style.display = 'none';
+      }, 800);
+    }
+
+    passwordInput.addEventListener('input', () => {
+      const val = passwordInput.value.toLowerCase().trim();
+      if (val === 'zesmaanden') {
+        unlockHero();
+      }
+    });
+
+    passwordInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const val = passwordInput.value.toLowerCase().trim();
+        if (val === 'zesmaanden') {
+          unlockHero();
+        } else {
+          passwordInput.classList.add('shake');
+          passwordHint.textContent = 'Probeer het nog eens...';
+          setTimeout(() => passwordInput.classList.remove('shake'), 400);
+        }
+      }
+    });
+
+    passwordInput.focus();
+
+    // --- Counter ---
+    const startDate = new Date('2025-10-13T00:00:00');
+
+    function updateCounter() {
+      const now = new Date();
+      const diff = now - startDate;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours;
+      document.getElementById('minutes').textContent = minutes;
+      document.getElementById('seconds').textContent = seconds;
+    }
+
+    updateCounter();
+    setInterval(updateCounter, 1000);
+
+    // --- Hero to Timeline transition ---
+    const hero = document.getElementById('hero');
+    const wrapper = document.getElementById('timeline-wrapper');
+    const startBtn = document.getElementById('start-btn');
+
+    startBtn.addEventListener('click', showTimeline);
+
+    function showTimeline() {
+      hero.classList.add('hidden');
+      wrapper.classList.add('visible');
+      setTimeout(() => {
+        observeCards();
+        observeVideos();
+      }, 300);
+    }
+
+    // --- Horizontal scroll with mouse wheel ---
+    wrapper.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+        e.preventDefault();
+        wrapper.scrollLeft += e.deltaY * 2;
+      }
+    }, { passive: false });
+
+    // --- Touch drag for horizontal scroll (mobile) ---
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let scrollStartX = 0;
+    let isDragging = false;
+
+    wrapper.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      scrollStartX = wrapper.scrollLeft;
+      isDragging = true;
+      wrapper.style.scrollBehavior = 'auto';
+    }, { passive: true });
+
+    wrapper.addEventListener('touchmove', (e) => {
+      if (!isDragging) return;
+      const dx = touchStartX - e.touches[0].clientX;
+      const dy = touchStartY - e.touches[0].clientY;
+      // Only hijack horizontal swipes
+      if (Math.abs(dx) > Math.abs(dy)) {
+        e.preventDefault();
+        wrapper.scrollLeft = scrollStartX + dx;
+      }
+    }, { passive: false });
+
+    wrapper.addEventListener('touchend', () => {
+      isDragging = false;
+      wrapper.style.scrollBehavior = 'smooth';
+    }, { passive: true });
+
+    // --- Intersection Observer for card animations ---
+    function observeCards() {
+      const cards = document.querySelectorAll('.card, .end-message');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        root: wrapper,
+        threshold: 0.15
+      });
+
+      cards.forEach(card => observer.observe(card));
+    }
+
+    // --- Video autoplay when visible ---
+    function observeVideos() {
+      const videos = document.querySelectorAll('.card-media video');
+      const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          if (entry.isIntersecting) {
+            video.play().then(() => {
+              video.classList.add('playing');
+            }).catch(() => {});
+          } else {
+            video.pause();
+            video.classList.remove('playing');
+          }
+        });
+      }, {
+        root: wrapper,
+        threshold: 0.4
+      });
+
+      videos.forEach(video => videoObserver.observe(video));
+
+      // Click to toggle play/pause and sound
+      videos.forEach(video => {
+        video.parentElement.addEventListener('click', () => {
+          if (video.paused) {
+            video.play();
+            video.classList.add('playing');
+          } else {
+            video.muted = !video.muted;
+          }
+        });
+      });
+    }
+
+    // --- Keyboard navigation ---
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        wrapper.scrollLeft += 400;
+      } else if (e.key === 'ArrowLeft') {
+        wrapper.scrollLeft -= 400;
+      } else if (e.key === 'Enter' || e.key === ' ') {
+        if (!hero.classList.contains('hidden')) {
+          showTimeline();
+        }
+      }
+    });
+
+    // --- Smooth scroll behavior ---
+    wrapper.style.scrollBehavior = 'smooth';
+
+    // --- End message scroll buttons ---
+    const msgContent = document.getElementById('msg-content');
+    const msgUp = document.getElementById('msg-up');
+    const msgDown = document.getElementById('msg-down');
+
+    msgUp.addEventListener('click', (e) => {
+      e.stopPropagation();
+      msgContent.scrollBy({ top: -120, behavior: 'smooth' });
+    });
+
+    msgDown.addEventListener('click', (e) => {
+      e.stopPropagation();
+      msgContent.scrollBy({ top: 120, behavior: 'smooth' });
+    });
+  </script>
+
+</body>
+</html>
